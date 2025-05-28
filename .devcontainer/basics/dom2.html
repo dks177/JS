@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 2</title>
+</head>
+<body style="background-color: #212121;color: white;">
+    <ul class="language">
+        <li>Java</li>
+    </ul>
+</body>
+<script>
+    function addL(langname){
+        const li=document.createElement('li')
+        li.innerHTML=`${langname}`                              // takes more time due to tree element traversal
+        document.querySelector('.language').appendChild(li)
+    }
+    function addoptiL(langname){
+        const li=document.createElement('li')
+        const addtext=document.createTextNode(langname)
+        li.appendChild(addtext)                                 // no traversal just adds element 
+         document.querySelector('.language').appendChild(li)    // less time
+    }
+    addL("Python")
+    addL("C++")
+    addL("JS")
+
+                            // FOR EDITING EXISTING VALUES
+
+    function ed(pos,langname){
+        const sel=document.querySelector(`li:nth-child(${pos})`)
+        console.log(sel);
+        // 1st method -> change value using innerHtml , innerText , TextContent
+        // -----------------------------------------------
+        // 2nd method -> outer html
+        // sel.outerHtml=<li>Typescript</li>
+        // -----------------------------------------------
+        // 3rd method------>
+        const li=document.createElement('li');
+        li.appendChild(document.createTextNode(langname))
+        sel.replaceWith(li)
+
+    }
+    ed(4,"mojo")
+    ed(1,"golang")
+
+                            // REMOVE ELEMENT
+
+    function rem(pos){
+        const sel=document.querySelector(`li:nth-child(${pos})`)
+        sel.remove()
+    }   
+    rem(1)
+    rem(1)
+</script>
+</html>
