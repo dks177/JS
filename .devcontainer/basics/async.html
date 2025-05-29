@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASYNC</title>
+</head>
+<body>
+    <h1 id="naam">My name is Devansh</h1>
+    <button id="shuru">Start</button>
+    <button id="roko">Stop</button>
+</body>
+<script>
+    const sayname=function(){
+        console.log("Harsh");
+    }
+    // function change(){
+    //     const head=document.getElementById("naam");
+    //     head.innerHTML=`My name is Harsh`;
+    // }
+    // const set=setTimeout(change,5000);
+    // document.getElementById("roko").addEventListener('click',function(){
+    //     clearTimeout(set);
+    //     console.log("stopped");
+    // })
+    let st;
+    document.getElementById("shuru").addEventListener('click',function(){
+        st=setInterval(sayname,1000);
+    });
+
+    document.getElementById("roko").addEventListener('click',function(){
+        clearInterval(st);
+    });
+</script>
+</html>
